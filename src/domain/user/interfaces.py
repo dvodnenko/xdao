@@ -1,11 +1,13 @@
+import uuid
 from abc import ABC, abstractmethod
+
 from domain.user.models import User
 
 
 class UserDAO(ABC):
 
     @abstractmethod
-    def get_by_id(self, user_id: int) -> User | None: ...
+    def get_by_id(self, user_id: uuid.UUID) -> User | None: ...
 
     @abstractmethod
     def save(self, user: User) -> None: ...

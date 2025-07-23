@@ -1,10 +1,12 @@
+import uuid
+
 from dataclasses import dataclass
 
 
 @dataclass(eq=False, kw_only=True)
 class User:
 
-    id: int
+    id: uuid.UUID
     name: str
     email: str
 
