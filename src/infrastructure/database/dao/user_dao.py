@@ -1,13 +1,13 @@
 import uuid
+from sqlalchemy.orm import Session
 
 from domain.user.interfaces import UserDAO
 from domain.user.models import User
-
 from infrastructure.database.models.user_model import UserORM
 
 
 class SQLAlchemyUserDAO(UserDAO):
-    def __init__(self, session):
+    def __init__(self, session: Session):
         self.session = session
 
     def get_by_id(self, user_id: uuid.UUID) -> User | None:
