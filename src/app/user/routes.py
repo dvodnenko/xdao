@@ -3,13 +3,13 @@ from sqlalchemy.orm import Session
 
 from domain.user.services import UserService
 from infrastructure.database.dao.user_dao import SQLAlchemyUserDAO
-from db import get_session
+from db import get_sql_session
 
 
 router = APIRouter()
 
 
-def get_user_service(session: Session = Depends(get_session)) -> UserService:
+def get_user_service(session: Session = Depends(get_sql_session)) -> UserService:
     dao = SQLAlchemyUserDAO(session)
     return UserService(dao)
 
