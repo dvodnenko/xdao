@@ -1,3 +1,5 @@
+from uuid import UUID
+
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
@@ -16,3 +18,7 @@ def get_user_service(session: Session = Depends(get_sql_session)) -> UserService
 @router.post('/register')
 def register(name: str, email: str, service: UserService = Depends(get_user_service)):
     return service.register_user(name, email)
+
+@router.get('/get_by_id')
+def get_by_id(id: UUID, service: UserService = Depends(get_user_service)):
+    return service.get_profile(id)
