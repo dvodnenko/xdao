@@ -2,17 +2,18 @@ from uuid import UUID
 
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
+from redis import Redis
 
 from domain.user.services import UserService
-from infrastructure.database.dao.user_dao import SQLAlchemyUserDAO
-from db import get_sql_session
+from infrastructure.database.dao.user_dao import RedisUserDAO
+from db import get_redis
 
 
 router = APIRouter()
 
 
-def get_user_service(session: Session = Depends(get_sql_session)) -> UserService:
-    dao = SQLAlchemyUserDAO(session)
+def get_user_service(redis: Redis = Depends(get_redis)) -> UserService:
+    dao = RedisUserDAO(redis)
     return UserService(dao)
 
 @router.post('/register')
