@@ -5,10 +5,8 @@ from redis.commands.search.field import TextField
 from redis.commands.search.index_definition import IndexDefinition, IndexType
 from redis.exceptions import ResponseError
 
-from app.user.routes import router as user_router
-from infrastructure.database.models.user_model import Base
-from db import engine, get_redis
-from utils.indexes import create_index
+from application.api.user.routes import router as user_router
+from infrastructure.database import *
 
 
 @asynccontextmanager
@@ -16,7 +14,7 @@ async def lifespan(app: FastAPI):
     Base.metadata.create_all(bind=engine)
 
     try:
-        create_index(get_redis(), 'user_idx', [
+        create_index(get_redis_client(), 'user_idx', [
             TextField('$.id', as_name='id'),
             TextField('$.name', as_name='name'),
             TextField('$.email', as_name='email'),
