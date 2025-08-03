@@ -1,8 +1,10 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
+from config import SQLITE_URI
 
-engine = create_engine('sqlite:///mydb.sqlite', echo=True)
+
+engine = create_engine(SQLITE_URI, echo=True)
 SessionLocal = sessionmaker(bind=engine)
 
 

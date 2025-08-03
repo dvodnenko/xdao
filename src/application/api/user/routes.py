@@ -7,7 +7,6 @@ from domain import *
 from infrastructure.database import *
 
 
-
 router = APIRouter()
 
 
