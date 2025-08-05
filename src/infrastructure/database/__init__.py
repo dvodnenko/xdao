@@ -5,7 +5,7 @@ from .alchemy.models.user_model import UserORM, Base
 from .alchemy.dao.user_dao import SQLAlchemyUserDAO
 
 from .redis.dao.user_dao import RedisUserDAO
-from .redis.indexes import create_index
+from .redis.indexes import create_all_indexes
 
 
 __all__ = [
@@ -14,7 +14,7 @@ __all__ = [
     'UserORM', 
     'SQLAlchemyUserDAO', 
     'RedisUserDAO',
-    'create_index',
     'engine',
     'Base',
+    'create_all_indexes',
 ]
