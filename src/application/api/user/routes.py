@@ -17,7 +17,7 @@ def get_user_service(redis: Redis = Depends(get_redis_client)) -> UserService:
 
 @router.post('/register')
 def register(user: UserSchema, service: UserService = Depends(get_user_service)):
-    return service.register_user(user.name, user.email)
+    return service.register_user(user)
 
 @router.get('/get_by_id')
 def get_by_id(id: UUID, service: UserService = Depends(get_user_service)):

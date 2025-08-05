@@ -8,11 +8,11 @@ class UserService:
     def __init__(self, dao: UserDAO):
         self.dao = dao
 
-    def register_user(self, name: str, email: str) -> User:
-        if self.dao.exists_by_email(email):
+    def register_user(self, user: User) -> User:
+        if self.dao.exists_by_email(user.email):
             raise ValueError('Email already registered')
 
-        new_user = User(id=uuid.uuid4(), name=name, email=email)
+        new_user = User(id=uuid.uuid4(), name=user.name, email=user.email)
         self.dao.save(new_user)
         return new_user
 
