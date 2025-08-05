@@ -1,6 +1,6 @@
 import uuid
 
-from domain.user.models import User
+from domain.user.entity import User
 from domain.user.interfaces import UserDAO
 
 
@@ -12,7 +12,7 @@ class UserService:
         if self.dao.exists_by_email(user.email):
             raise ValueError('Email already registered')
 
-        new_user = User(id=uuid.uuid4(), name=user.name, email=user.email)
+        new_user = User(name=user.name, email=user.email)
         self.dao.save(new_user)
         return new_user
 

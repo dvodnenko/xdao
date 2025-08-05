@@ -1,7 +1,7 @@
 import uuid
 from abc import ABC, abstractmethod
 
-from domain.user.models import User
+from domain.user.entity import User
 
 
 class UserDAO(ABC):
