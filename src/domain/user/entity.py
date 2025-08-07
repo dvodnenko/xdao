@@ -1,12 +1,11 @@
 import uuid
 from dataclasses import dataclass
 
-from domain.base.entity import Entity
-
 
 @dataclass(eq=False, kw_only=True)
-class User(Entity):
+class User:
 
+    id: uuid.UUID
     name: str
     email: str
 

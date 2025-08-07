@@ -7,7 +7,7 @@ JSONs. maybe like mappings in SQLAlchemy idk
 
 from redis import Redis
 
-from infrastructure.database.redis.indexes.user import create_user_idx
+from infrastructure.database.indexes.user import create_user_idx
 
 
 def create_all_indexes(redis: Redis) -> None:
