@@ -1,13 +1,16 @@
 import uuid
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 
 @dataclass(eq=False, kw_only=True)
 class User:
 
     id: uuid.UUID
-    name: str
     email: str
+    name: str
+    phone: str
+    password_hash: str
+    is_active: bool = field(default=True)
 
     def __eq__(self, other):
         return isinstance(other, User) and self.id == other.id
