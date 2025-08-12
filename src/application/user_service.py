@@ -14,6 +14,7 @@ class CreateUserRequest:
     phone: str
     password: str # it arrives not hashed
     is_active: bool
+    is_admin: bool
 
 
 class UserService:

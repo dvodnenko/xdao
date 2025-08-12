@@ -14,6 +14,7 @@ users_table = Table(
     Column('phone', String(20)),
     Column('password_hash', String(64)),
     Column('is_active', Boolean, nullable=False, default=True),
+    Column('is_admin', Boolean, nullable=False, default=False)
 )
 
 
